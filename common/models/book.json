@@ -1,0 +1,46 @@
+{
+  "name": "book",
+  "plural": "books",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "RequireValidator": {
+      "properties": [
+        "author",
+        {
+          "field": "title",
+          "message": "Book title is required!"
+        }
+      ]
+    },
+    "UniqueValidator": {
+      "properties": [
+        {
+          "field": "title",
+          "message": "Book title is not unique!"
+        }
+      ]
+    }
+  },
+  "properties": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "author": {
+      "type": "string",
+      "required": true
+    },
+    "published": {
+      "type": "date",
+      "required": false
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
